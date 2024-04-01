@@ -7,10 +7,14 @@ export default function TicketList() {
 
     useEffect(() => {
         const getTickets = async() => {
-            const response = await fetch('http://localhost:4000/api/v1/tickets');
-            const data = await response.json();
-            if (response.ok) {
-                setTickets(data);
+            try {
+                const response = await fetch('http://localhost:4000/api/v1/tickets');
+                const data = await response.json();
+                if (response.ok) {
+                    setTickets(data);
+                }
+            } catch(err) {
+                console.log(err);
             }
         }
         getTickets();
