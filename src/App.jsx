@@ -9,6 +9,7 @@ import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
 import Tickets from "./pages/Tickets";
 import TicketDetail from "./pages/TicketDetail";
+import CreateTicket from "./pages/CreateTicket";
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
         </Route>
         <Route exact path="/tickets">
           <Tickets />
+        </Route>
+        <Route exact path="/tickets/create">
+          <CreateTicket />
         </Route>
         <Route exact path="/tickets/:id">
           <TicketDetail />

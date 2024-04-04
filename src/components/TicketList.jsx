@@ -8,7 +8,7 @@ export default function TicketList() {
     useEffect(() => {
         const getTickets = async() => {
             try {
-                const response = await fetch('http://localhost:4000/api/v1/tickets');
+                const response = await fetch(process.env.REACT_APP_API + '/tickets');
                 const data = await response.json();
                 if (response.ok) {
                     setTickets(data);

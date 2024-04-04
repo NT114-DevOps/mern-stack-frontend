@@ -10,7 +10,7 @@ function TicketDetail() {
 
     useEffect(() => {
         const getTicket = async() => {
-            const response = await fetch('http://localhost:4000/api/v1/tickets/' + id);
+            const response = await fetch(process.env.REACT_APP_API + '/tickets/' + id);
             const data = await response.json();
             if (response.ok) {
                 setTicket(data);

@@ -2,8 +2,8 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function CreateForm() {
 
+export default function CreateForm() {
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
     const [priority, setPriority] = useState("low");
@@ -51,7 +51,7 @@ export default function CreateForm() {
             />
           </label>
           <label>
-            <span>Title:</span>
+            <span>Description:</span>
             <textarea
               required
               onChange={(e) => setBody(e.target.value)}
