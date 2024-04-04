@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { useParams   } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 function TicketDetail() {
     const params = useParams();
+    const history = useHistory();
     const id = params.id;
     const [ticket, setTicket] = useState({});
 
@@ -19,8 +20,23 @@ function TicketDetail() {
         getTicket();
     }, []);
 
-    const handleDelete = () => {
-
+    const handleDelete = async() => {
+        const res = await fetch(process.env.REACT_APP_API + '/tickets/' + id, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({id})
+        });
+        if (res.ok) {
+            toast.success('Ticket deleted successfully');
+            setTimeout(() => {
+                history.push('/');
+            }, 3500);
+        }
+        else {
+            toast.error('Failed to delete ticket');
+        }
     }
 
 
@@ -37,7 +53,7 @@ function TicketDetail() {
                 </div>
                 <div>
                     <button className="btn-primary" onClick={handleDelete}>Discard</button>
-                    <ToastContainer/>
+                    <ToastContainer autoClose={3000} />
                 </div>
             </div>
             <p>{ticket.body}</p>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { useHistory } from 'react-router-dom';
 
 
 export default function CreateForm() {
@@ -9,13 +10,9 @@ export default function CreateForm() {
     const [priority, setPriority] = useState("low");
     const userEmail = "tonynguyenit2003@gmail.com";
 
-    const [isLoading, setLoading] = useState(false);
+    const history = useHistory();
 
-    const confirm = () => toast.success('Ticket created!', {
-        position: "top-center",
-        autoClose: 2000,
-        theme:'colored'
-    });
+    const [isLoading, setLoading] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -25,7 +22,7 @@ export default function CreateForm() {
             title, body, priority, userEmail
         };
 
-        const res = await fetch("http://localhost:4000/api/v1/tickets", {
+        const res = await fetch(process.env.REACT_APP_API + '/tickets', {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -33,8 +30,11 @@ export default function CreateForm() {
           body: JSON.stringify(ticket)
         });
 
-        if (res.status == 201) {
-            confirm();
+        if (res.status === 201) {
+            toast.success('Ticket created successfully');
+            setTimeout(() => {
+                history.push('/');
+            }, 3500);
         }
     }
 
@@ -76,7 +76,7 @@ export default function CreateForm() {
           {isLoading && <span>Adding...</span>}
           {!isLoading && <span>Add Ticket</span>}
         </button>
-        <ToastContainer />
+        <ToastContainer autoClose={3000} />
       </form>
     )
 }
