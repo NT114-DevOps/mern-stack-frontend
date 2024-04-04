@@ -47,4 +47,4 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         push: true
-        tags: tonyq2k3/mern-stack-frontend:latest
+        tags: tonyq2k3/mern-stack-frontend:1.0
