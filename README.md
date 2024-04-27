@@ -1,14 +1,14 @@
-# Motion Assists (Front-end)
+# Motion Blogs (Front-end)
 Made using [ReactJS](https://react.dev/) and [Tailwind CSS](https://tailwindcss.com/)
 
 ## About
-Motion Assists is an IT helpdesk app with a simple ticketing system. 
+Motion Blogs is a simple blogging app.
 
 The main purpose of this app is to be used in the development of the Ci/CD pipeline of our major DevOps project.
 
 ## Features
 + Easy to use UI
-+ Ticketing system with CRUD operations
++ CRUD operations for posting and deleting blog posts and comments
 
 ## Instructions
 1. Clone the repository
@@ -22,7 +22,7 @@ git clone https://github.com/NT114-DevOps/mern-stack-frontend.git
 ```
 REACT_APP_API=<Your API URL>
 
-(eg: REACT_APP_API=http://localhost:4000/api/v1)
+(eg: REACT_APP_API=http://localhost:8000)
 ```
 
 4. To run locally, run `npm start`

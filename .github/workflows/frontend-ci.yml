@@ -4,8 +4,6 @@
 name: Frontend CI
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
@@ -35,6 +33,7 @@ jobs:
         CI: ""
   
   docker:
+    needs: build
     runs-on: ubuntu-latest
     steps:
     -
@@ -51,4 +50,4 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         push: true
-        tags: tonyq2k3/mern-stack-frontend:1.0
+        tags: tonyq2k3/mern-stack-frontend:dev
