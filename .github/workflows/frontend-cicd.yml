@@ -9,7 +9,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -32,7 +31,8 @@ jobs:
       env:
         CI: ""
   
-  docker:
+
+  build-image:
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -51,3 +51,15 @@ jobs:
       with:
         push: true
         tags: tonyq2k3/mern-stack-frontend:dev
+
+
+  deploy-qa:
+    needs: build-image
+    runs-on: self-hosted
+    steps:
+      - name: Pull Docker image
+        run: sudo docker pull tonyq2k3/mern-stack-frontend:dev
+      - name: Delete old Docker container
+        run: sudo docker rm -f frontend-container || true
+      - name: Run a new container
+        run: sudo docker run -d -p 3000:3000 --name frontend-container tonyq2k3/mern-stack-frontend:dev
