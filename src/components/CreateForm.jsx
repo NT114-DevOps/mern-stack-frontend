@@ -21,7 +21,7 @@ export default function CreateForm() {
             title, body, username
         };
 
-        const res = await fetch(process.env.REACT_APP_API + '/posts', {
+        const res = await fetch(`/api/posts`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -13,7 +13,13 @@ function PostDetail() {
 
     useEffect(() => {
         const getPost = async() => {
-            const response = await fetch(process.env.REACT_APP_API + '/posts/' + id);
+            const response = await fetch(`/api/posts/${id}`, {
+                method: 'GET',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
             const data = await response.json();
             if (response.ok) {
                 setPost(data);
@@ -23,8 +29,9 @@ function PostDetail() {
     }, []);
 
     const handleDelete = async() => {
-        const res = await fetch(process.env.REACT_APP_API + '/posts/' + id, {
+        const res = await fetch(`/api/posts/${id}`, {
             method: 'DELETE',
+            mode: 'cors',
             headers: {
                 'Content-Type': 'application/json'
             },

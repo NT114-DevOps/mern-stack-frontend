@@ -8,13 +8,19 @@ export default function PostList() {
     useEffect(() => {
         const getPosts = async() => {
             try {
-                const response = await fetch(process.env.REACT_APP_API + '/posts');
+                const response = await fetch(`/api/posts`, {
+                    method: 'GET',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
                 const data = await response.json();
                 if (response.ok) {
                     setPosts(data);
                 }
             } catch(err) {
-                console.log(err);
+                console.log("Can't fetch post list", err);
             }
         }
         getPosts();

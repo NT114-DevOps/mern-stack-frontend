@@ -17,10 +17,11 @@ export default function CreateComment({ postId }) {
         setLoading(true);
 
         const comment = {
-            postId, body, username
+          postId, body, username
         };
+        console.log(comment);
 
-        const res = await fetch(process.env.REACT_APP_API + '/comments', {
+        const res = await fetch(`/api/comments/`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -29,9 +30,9 @@ export default function CreateComment({ postId }) {
         });
 
         if (res.status === 201) {
-            toast.success('Comment created successfully');
-            setTimeout(() => {
-              history.go(0);
+          toast.success('Comment created successfully');
+          setTimeout(() => {
+            history.go(0);
           }, 3500);
         }
     }

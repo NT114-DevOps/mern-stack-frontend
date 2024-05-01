@@ -9,13 +9,19 @@ export default function CommentList({ postId }) {
         const getComments = async() => {
             console.log("Post id", postId);
             try {
-                const response = await fetch(process.env.REACT_APP_API + '/comments/' + postId);
+                const response = await fetch(`/api/comments/${postId}`, {
+                    method: 'GET',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
                 const data = await response.json();
                 if (response.ok) {
                     setComments(data);
                 }
             } catch(err) {
-                console.log(err);
+                console.log("Can't fetch comment list", err);
             }
         }
         getComments();
