@@ -4,10 +4,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from 'react-router-dom';
 
 
-export default function CreateForm() {
+export default function CreateForm({ username }) {
+
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
-    const [username, setUsername] = useState("");
 
     const history = useHistory();
 
@@ -55,15 +55,6 @@ export default function CreateForm() {
               required
               onChange={(e) => setBody(e.target.value)}
               value={body}
-            />
-          </label>
-          <label>
-            <span>Username:</span>
-            <input
-              required 
-              type="text"
-              onChange={(e) => setUsername(e.target.value)}
-              value={username}
             />
           </label>
           <button 

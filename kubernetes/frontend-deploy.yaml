@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend-service
+  name: frontend-svc
 spec:
   selector:
     app: frontend
   type: LoadBalancer
   ports:
-  - port: 3000
+  - port: 80
     targetPort: 3000
 
 ---
@@ -30,7 +30,7 @@ spec:
         imagePullPolicy: Always
         env:
           - name: REACT_APP_API
-            value: "http://gateway-service:8000"
+            value: "http://gateway-svc:8000"
         resources:
           limits:
             memory: 512Mi

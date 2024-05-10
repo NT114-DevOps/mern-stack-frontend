@@ -1,7 +1,6 @@
 import logo from './logo.png';
-import icon from './icon.png';
+import userIcon from './user.png';
 
 export {
-    logo,
-    icon
+    logo, userIcon
 };

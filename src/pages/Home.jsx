@@ -5,8 +5,11 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <main>
-        <h2>Dashboard</h2>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero repellendus tempore, exercitationem odit, quasi doloremque possimus recusandae alias sequi totam soluta natus iure eius, obcaecati sint dolores blanditiis aspernatur quo officia iusto ut. Et, aliquid sed voluptates iste cum totam, facere explicabo, fugit suscipit ratione aspernatur consequuntur ex mollitia quaerat?</p>
+        <h2>About</h2>
+        <p>
+          Motion Blogs is a blogging website where people share their own stories and experiences to others around the globe. With this website, you can express yourself, connect with others and make your voice heard!
+          The purpose of this website however, is to be deployed via our team's CI/CD pipeline of our DevOps Project.
+        </p>
 
         <div className="flex justify-center my-8">
           <Link to="/posts">
@@ -14,16 +17,16 @@ function Home() {
           </Link>
         </div>
 
-        <h2>Company Updates</h2>
+        <h2>Tips of the day</h2>
 
         <div className="card">
-            <h3>New member of the web dev team...</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, at quam. Dolores omnis possimus quam soluta rerum illo laborum ullam pariatur molestiae, modi beatae corrupti.</p>
+            <h3>Rehydration</h3>
+            <p>Start your day with a glass of water to rehydrate your body after a night's sleep.</p>
         </div>
         <div className="card">
-            <h3>New website live!</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, at quam. Dolores omnis possimus quam soluta rerum illo laborum ullam pariatur molestiae, modi beatae corrupti, assumenda distinctio adipisci, cupiditate minima eum vitae? Similique dicta est facilis debitis, autem temporibus quo repellat illum unde id iste veritatis eveniet, aspernatur enim quas.</p>
-        </div>  
+            <h3>Boosting your mood</h3>
+            <p>Express gratitude by writing down three things you're thankful for each day. It can shift your perspective and boost your mood.</p>
+        </div>
     </main>
   )
 }

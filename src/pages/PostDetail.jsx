@@ -10,6 +10,7 @@ function PostDetail() {
     const history = useHistory();
     const id = params.id;
     const [post, setPost] = useState({});
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
         const getPost = async() => {
@@ -25,7 +26,22 @@ function PostDetail() {
                 setPost(data);
             }
         }
+        const getUser = async () => {
+            const response = await fetch(`/api/auth/user`, {
+                method: 'GET',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const user = await response.json();
+            if (response.ok) {
+                console.log(user);
+                setUser(user);
+            }
+        }
         getPost();
+        getUser();
     }, []);
 
     const handleDelete = async() => {
@@ -60,15 +76,28 @@ function PostDetail() {
                     <h3>{post.title}</h3>
                     <small>Created by {post.username}</small>
                 </div>
-                <div>
-                    <button className="btn-primary" onClick={handleDelete}>Discard</button>
-                    <ToastContainer autoClose={3000} />
-                </div>
+                {
+                    user !== null && post.username == user.username ? (
+                        <div>
+                            <button className="btn-primary" onClick={handleDelete}>Discard</button>
+                            <ToastContainer autoClose={3000} />
+                        </div>
+                    ) : (
+                        <></>
+                    )
+                }
+                
             </div>
             <p>{post.body}</p>
         </div>
         <h2 className='mt-20 text-center text-lg border-b-2 border-gray-300'>Comments</h2>
-        <CreateComment postId={id} />
+        {
+            user !== null ? (
+                <CreateComment postId={id} username={user.username} />
+            ) : (
+                <></>
+            )
+        }
         <CommentList postId={id} />
     </main>
   )
