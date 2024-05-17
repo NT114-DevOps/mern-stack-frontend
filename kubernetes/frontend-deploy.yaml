@@ -9,8 +9,8 @@ spec:
   ports:
   - port: 80
     targetPort: 3000
-
 ---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -27,13 +27,15 @@ spec:
       containers:
       - name: frontend-c
         image: tonyq2k3/mern-stack-frontend:dev
-        imagePullPolicy: Always
         env:
           - name: REACT_APP_API
-            value: "http://gateway-svc:8000"
+            valueFrom:
+              configMapKeyRef:
+                name: api-configmap
+                key: gateway_url
         resources:
           limits:
-            memory: 512Mi
-            cpu: "1"
+            memory: 256Mi
+            cpu: "0.5"
         ports:
         - containerPort: 3000

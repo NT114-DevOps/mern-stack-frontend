@@ -1,12 +1,10 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
-name: Frontend CI-CD
+name: Frontend CI
 
 on:
   pull_request:
     branches: [ "main" ]
 
+    
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -51,15 +49,3 @@ jobs:
       with:
         push: true
         tags: tonyq2k3/mern-stack-frontend:dev
-
-
-  deploy-qa:
-    needs: build-image
-    runs-on: self-hosted
-    steps:
-      - name: Pull Docker image
-        run: sudo docker pull tonyq2k3/mern-stack-frontend:dev
-      - name: Delete old Docker container
-        run: sudo docker rm -f frontend-container || true
-      - name: Run a new container
-        run: sudo docker run -d -p 3000:3000 --name frontend-container tonyq2k3/mern-stack-frontend:dev
