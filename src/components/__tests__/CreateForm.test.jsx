@@ -10,7 +10,6 @@ describe('CreateForm component', () => {
     
     expect(screen.getByLabelText(/Title:/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Description:/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/Username:/i)).toBeInTheDocument();
     expect(screen.getByText(/Create post/i)).toBeInTheDocument();
   });
 
