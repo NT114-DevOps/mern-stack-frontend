@@ -24,4 +24,10 @@ jobs:
             run: aws eks update-kubeconfig --name $EKS_CLUSTER_NAME --region $AWS_REGION
     
           - name: Deploy to EKS
-            run: kubectl apply -f ./kubernetes/frontend-deploy.yaml
+            run: kubectl apply -f https://raw.githubusercontent.com/NT114-DevOps/mern-stack-frontend/main/kubernetes/frontend-deploy.yaml
+
+
+
+            # git clone https://github.com/NT114-DevOps/mern-stack-frontend.git
+            # cd mern-stack-frontend
+            # kubectl apply -f kubernetes/frontend-deploy.yaml
