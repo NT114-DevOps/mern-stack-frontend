@@ -26,9 +26,9 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args:
-            -sonar.projectKey=NT114-DevOps_mern-stack-frontend
-            -sonar.organization=nt114-devops
-            -sonar.sources=src
+            -Dsonar.projectKey=NT114-DevOps_mern-stack-frontend
+            -Dsonar.organization=nt114-devops
+            -Dsonar.sources=src
 
   Build:
     needs: Analysis
