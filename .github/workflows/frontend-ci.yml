@@ -19,7 +19,16 @@ jobs:
         with:
           node-version: 18.x
 
-      
+      - name: Analyze with SonarCloud
+        uses: sonarsource/sonarcloud-github-action@v1.8
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args:
+            -sonar.projectKey=NT114-DevOps_mern-stack-frontend
+            -sonar.organization=nt114-devops
+            -sonar.sources=src
 
   Build:
     needs: Analysis
@@ -39,16 +48,6 @@ jobs:
 
     - name: Install dependencies
       run: npm ci
-
-    - name: Analyze with SonarCloud
-      uses: SonarSource/sonarcloud-github-action@v1.8
-      env:
-        GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      with:
-        args:
-          -Dsonar.projectKey=NT114-DevOps_mern-stack-frontend
-          -Dsonar.organization=nt114-devops
 
     - name: Build run
       run: npm run build --if-present
