@@ -13,22 +13,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
-      - name: Use Node.js 18
-        uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          fetch-depth: 0
 
-      - name: Analyze with SonarCloud
+      - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args:
-            -Dsonar.projectKey=NT114-DevOps_mern-stack-frontend
-            -Dsonar.organization=nt114-devops
-            -Dsonar.sources=src
 
   Build:
     needs: Analysis
