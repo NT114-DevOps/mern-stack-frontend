@@ -39,33 +39,33 @@ output "kubeconfig-certificate-authority-data" {
 }
 
 # EKS Add-ons
-# resource "aws_eks_addon" "coredns" {
-#   cluster_name = local.cluster_name
-#   addon_name = "coredns"
-#   addon_version = "v1.11.1-eksbuild.4"
-#   depends_on = [ aws_eks_cluster.microservice_cluster ]
-# }
+resource "aws_eks_addon" "coredns" {
+  cluster_name = local.cluster_name
+  addon_name = "coredns"
+  addon_version = "v1.11.1-eksbuild.4"
+  depends_on = [ aws_eks_cluster.microservice_cluster ]
+}
 
-# resource "aws_eks_addon" "kube_proxy" {
-#   cluster_name = local.cluster_name
-#   addon_name = "kube_proxy"
-#   addon_version = "v1.29.0-eksbuild.1"
-#   depends_on = [ aws_eks_cluster.microservice_cluster ]
-# }
+resource "aws_eks_addon" "kube_proxy" {
+  cluster_name = local.cluster_name
+  addon_name = "kube_proxy"
+  addon_version = "v1.29.0-eksbuild.1"
+  depends_on = [ aws_eks_cluster.microservice_cluster ]
+}
 
-# resource "aws_eks_addon" "vpc-cni" {
-#   cluster_name = local.cluster_name
-#   addon_name = "vpc-cni"
-#   addon_version = "v1.16.0-eksbuild.1"
-#   depends_on = [ aws_eks_cluster.microservice_cluster ]
-# }
+resource "aws_eks_addon" "vpc-cni" {
+  cluster_name = local.cluster_name
+  addon_name = "vpc-cni"
+  addon_version = "v1.16.0-eksbuild.1"
+  depends_on = [ aws_eks_cluster.microservice_cluster ]
+}
 
-# resource "aws_eks_addon" "eks-pod-identity-agent" {
-#   cluster_name = local.cluster_name
-#   addon_name = "eks-pod-identity-agent"
-#   addon_version = "v1.2.0-eksbuild.1"
-#   depends_on = [ aws_eks_cluster.microservice_cluster ]
-# }
+resource "aws_eks_addon" "eks-pod-identity-agent" {
+  cluster_name = local.cluster_name
+  addon_name = "eks-pod-identity-agent"
+  addon_version = "v1.2.0-eksbuild.1"
+  depends_on = [ aws_eks_cluster.microservice_cluster ]
+}
 
 
 # EKS Node Group
