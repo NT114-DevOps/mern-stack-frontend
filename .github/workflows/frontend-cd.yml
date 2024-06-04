@@ -2,7 +2,7 @@ name: Frontend CD
 
 on:
   push:
-    branches: [ "main" ]
+    branches: "*"
 
 env:
   EKS_CLUSTER_NAME: microservice-cluster

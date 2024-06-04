@@ -1,12 +1,20 @@
 name: Terraform Apply
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        description: 'Environment to create'
+        options:
+          - test
+          - production
 
 env:
     TF_CLOUD_ORGANIZATION: "NT114"
     TF_API_TOKEN: "${{ secrets.TF_API_TOKEN }}"
     TF_WORKSPACE: "terraform-github-actions"
-    CONFIG_DIRECTORY: "./terraform/"
+    CONFIG_DIRECTORY: "./terraform/${{ github.event.inputs.environment }}/"
 
 jobs:
     terraform:

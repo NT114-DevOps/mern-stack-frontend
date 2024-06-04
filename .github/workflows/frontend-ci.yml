@@ -1,11 +1,11 @@
 name: Frontend CI
 
 on:
-  pull_request:
-    branches: [ "main" ]
   push:
-    branches: [ "main"]
-
+    branches:
+      - "*"
+  pull_request:
+    branches: ["dev"]
     
 jobs:
   Analysis:
@@ -19,11 +19,10 @@ jobs:
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}  
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   Build:
-    needs: Analysis
     runs-on: ubuntu-latest
 
     strategy:
@@ -53,7 +52,8 @@ jobs:
   
 
   Build-image:
-    needs: Build
+    needs: [Build, Analysis]
+    if: ${{ success() }}
     runs-on: ubuntu-latest
     steps:
     -
@@ -70,4 +70,4 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         push: true
-        tags: tonyq2k3/mern-stack-frontend:dev
+        tags: tonyq2k3/mern-stack-frontend:${{ github.ref_name }}
