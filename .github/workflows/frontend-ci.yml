@@ -1,6 +1,7 @@
-name: Frontend CI
+name: CI
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - "*"
@@ -70,4 +71,4 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         push: true
-        tags: tonyq2k3/mern-stack-frontend:${{ github.ref_name }}
+        tags: tonyq2k3/mern-stack-frontend:${{ github.sha }}
