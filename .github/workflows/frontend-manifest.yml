@@ -7,7 +7,7 @@ on:
         description: 'Docker tag to update manifest'
         required: true
         type: string
-
+        
 
 jobs:
   update-manifest:
