@@ -3,6 +3,9 @@ name: Test environment deployment
 on:
     push:
         branches: ["dev"]
+        paths:
+            - "public/**"
+            - "src/**"
 
 jobs:
     Build-image:
@@ -43,6 +46,6 @@ jobs:
                     git config --global user.name "TonyQ2k3"
                     echo "Update frontend version to ${{ github.sha }}"
                     sed -i 's#tonyq2k3/mern-stack-frontend:[^[:space:]]*$#tonyq2k3/mern-stack-frontend:${{ github.sha }}#g' ./test/frontend/frontend-deploy.yaml
-                    git add ./deployment/frontend/frontend-deploy.yaml
+                    git add ./test/frontend/frontend-deploy.yaml
                     git commit -m "Update frontend version to ${{ github.sha }} in test environment"
                     git push origin main
