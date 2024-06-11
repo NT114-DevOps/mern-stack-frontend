@@ -27,10 +27,6 @@ function Home() {
             <h3>Boosting your mood</h3>
             <p>Express gratitude by writing down three things you're thankful for each day. It can shift your perspective and boost your mood.</p>
         </div>
-        <div className="card">
-            <h3>This is a new card!</h3>
-            <p>Express gratitude by writing down three things you're thankful for each day. It can shift your perspective and boost your mood.</p>
-        </div>
     </main>
   )
 }
