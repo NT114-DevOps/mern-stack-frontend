@@ -5,11 +5,12 @@ on:
   push:
     branches:
       - "*"
+    branches-ignore: ["test", "main"]
     paths:
       - "public/**"
       - "src/**"
   pull_request:
-    branches: ["main", "dev"]
+    branches: ["main", "dev", "test"]
     paths:
       - "public/**"
       - "src/**"

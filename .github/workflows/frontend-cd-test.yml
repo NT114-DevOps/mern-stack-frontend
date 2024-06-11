@@ -2,10 +2,11 @@ name: Test environment deployment
 
 on:
     push:
-        branches: ["dev"]
+        branches: ["test"]
         paths:
             - "public/**"
             - "src/**"
+        
 
 jobs:
     Build-image:
