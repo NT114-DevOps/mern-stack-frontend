@@ -3,13 +3,12 @@ name: Frontend CI
 on:
   workflow_dispatch:
   push:
-    branches:
-      - "*"
+    branches-ignore: ["main", "test"]
     paths:
       - "public/**"
       - "src/**"
   pull_request:
-    branches: ["main", "dev", "test"]
+    branches: ["main", "test"]
     paths:
       - "public/**"
       - "src/**"
