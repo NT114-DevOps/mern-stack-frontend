@@ -10,6 +10,9 @@ function Home() {
           Motion Blogs is a blogging website where people share their own stories and experiences to others around the globe. With this website, you can express yourself, connect with others and make your voice heard!
           The purpose of this website however, is to be deployed via our team's CI/CD pipeline of our DevOps Project.
         </p>
+        <p>
+          New header text!!!!
+        </p>
 
         <div className="flex justify-center my-8">
           <Link to="/posts">
