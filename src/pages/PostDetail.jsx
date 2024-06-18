@@ -14,7 +14,7 @@ function PostDetail() {
 
     useEffect(() => {
         const getPost = async() => {
-            const response = await fetch(`/api/posts/${id}`, {
+            const response = await fetch(`/api/posts/all/${id}`, {
                 method: 'GET',
                 mode: 'cors',
                 headers: {
@@ -42,7 +42,7 @@ function PostDetail() {
         }
         getPost();
         getUser();
-    }, []);
+    }, [id]);
 
     const handleDelete = async() => {
         const res = await fetch(`/api/posts/${id}`, {
@@ -77,7 +77,7 @@ function PostDetail() {
                     <small>Created by {post.username}</small>
                 </div>
                 {
-                    user !== null && post.username == user.username ? (
+                    user !== null && post.username === user.username ? (
                         <div>
                             <button className="btn-primary" onClick={handleDelete}>Discard</button>
                             <ToastContainer autoClose={3000} />
